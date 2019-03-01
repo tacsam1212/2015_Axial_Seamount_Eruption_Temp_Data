@@ -1,0 +1,31 @@
+import scipy
+import numpy as np
+from matplotlib import pyplot as plt
+import csv
+import glob
+
+#After file download is complete, can read through them using .glob as follows:
+#Note: this is only for one location, however, it is easy to download the other locations to and change paths, titles, etc. 
+#Note: This is if the code file is in with the .csv files you are reading from (Easy to locate and use other methods to follow paths if
+#desired).
+
+filenames = sorted(glob.glob('*.csv'))
+filenames = filenames[0:182]
+meanCount = 0
+fileNumb = 0
+tempAvg = [];
+for i in filenames:
+    dataAll = np.genfromtxt(fname=i, delimiter=',',skip_header=1)
+    x = dataAll[:,7]
+    tempAvg.append(np.mean(dataAll[:,7]));
+    fileNumb = fileNumb + 1
+    meanCount = meanCount + np.mean(x)
+    
+#Plot Data 
+x2 = np.linspace(0,365,182)
+len(x)
+plt.grid()
+plt.plot(x2,tempAvg)
+plt.xlabel('Days - 2015')
+plt.ylabel('Avg. Temperature   [$^\circ$C]')
+plt.title("Eastern Caldera")
