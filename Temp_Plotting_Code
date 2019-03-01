@@ -3,17 +3,19 @@ import numpy as np
 from matplotlib import pyplot as plt
 import csv
 import glob
+import os
 
 #After file download is complete, can read through them using .glob as follows:
-#Note: this is only for one location, however, it is easy to download the other locations to and change paths, titles, etc. 
-#Note: This is if the code file is in with the .csv files you are reading from (Easy to locate and use other methods to follow paths if
-#desired).
+#Note: this is only for one location, however, it is easy to download the other locations' data and change paths, titles, etc. 
+#Will also need to change your linspace to match filenames length
+
 
 filenames = sorted(glob.glob('*.csv'))
-filenames = filenames[0:182]
+filenames = filenames[0:181]
 meanCount = 0
 fileNumb = 0
 tempAvg = [];
+os.chdir("C:\\FilePath")
 for i in filenames:
     dataAll = np.genfromtxt(fname=i, delimiter=',',skip_header=1)
     x = dataAll[:,7]
@@ -23,7 +25,6 @@ for i in filenames:
     
 #Plot Data 
 x2 = np.linspace(0,365,182)
-len(x)
 plt.grid()
 plt.plot(x2,tempAvg)
 plt.xlabel('Days - 2015')
