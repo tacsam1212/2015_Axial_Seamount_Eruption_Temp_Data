@@ -8,6 +8,7 @@ import os
 #After file download is complete, can read through them using .glob as follows:
 #Note: this is only for one location, however, it is easy to download the other locations' data and change paths, titles, etc. 
 #Will also need to change your linspace to match filenames length
+#Ensure correct filepath is used in place of "Filepath" in code.
 
 
 filenames = sorted(glob.glob('*.csv'))
